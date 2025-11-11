@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Braj Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-container {
+            min-height: 100vh;
+            background: #f5f7fa;
+        }
+        
+        .admin-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-main {
+            padding: 2rem 0;
+        }
+        
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .stat-card .value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-card .label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .admin-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .admin-table th {
+            background: var(--light);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .admin-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .admin-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .admin-tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .admin-tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .recent-activity {
+            list-style: none;
+        }
+        
+        .activity-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-content p {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="container">
+                <div class="admin-nav">
+                    <div class="logo">
+                        <i class="fas fa-cogs"></i>
+                        <h1>Admin <span>Panel</span></h1>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span id="admin-welcome">Welcome, Admin!</span>
+                        <a href="index.html" class="btn btn-outline">Back to Site</a>
+                        <button class="btn btn-primary" id="admin-logout">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Notification -->
+        <div class="notification" id="notification"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <div class="container">
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="value" id="total-providers">0</div>
+                        <div class="label">Total Providers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="pending-approvals">0</div>
+                        <div class="label">Pending Approvals</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="total-bookings">0</div>
+                        <div class="label">Total Bookings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="avg-rating">0.0</div>
+                        <div class="label">Average Rating</div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="admin-tabs">
+                    <div class="admin-tab active" data-tab="dashboard">Dashboard</div>
+                    <div class="admin-tab" data-tab="providers">Service Providers</div>
+                    <div class="admin-tab" data-tab="bookings">Bookings</div>
+                    <div class="admin-tab" data-tab="reviews">Reviews</div>
+                </div>
+
+                <!-- Dashboard Tab -->
+                <div class="tab-content active" id="dashboard-tab">
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h3 class="section-title">Recent Activity</h3>
+                            <button class="btn btn-primary">View All</button>
+                        </div>
+                        <ul class="recent-activity" id="recent-activity">
+                            <!-- Activity items will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="admin-section">
+                            <h3 class="section-title">Quick Actions</h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <button class="btn btn-primary">Add New Provider</button>
+                                <button class="btn btn-primary">View All Bookings</button>
+                                <button class="btn btn-primary">Generate Report</button>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-section">
+                            <h3 class="section-title">System Status</h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Website Status:</span>
+                                    <span class="status-badge status-approved">Online</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Database:</span>
+                                    <span class="status-badge status-approved">Connected</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Last Backup:</span>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Providers Tab -->
+                <div class="tab-content" id="providers-tab">
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h3 class="section-title">Service Provider Management</h3>
+                            <button class="btn btn-primary">Add New Provider</button>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Service</th>
+                                    <th>Location</th>
+                                    <th>Rating</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-providers-table">
+                                <!-- Providers will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Bookings Tab -->
+                <div class="tab-content" id="bookings-tab">
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h3 class="section-title">Booking Management</h3>
+                            <button class="btn btn-primary">Export Data</button>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Provider</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-bookings-table">
+                                <!-- Bookings will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div class="tab-content" id="reviews-tab">
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h3 class="section-title">Review Management</h3>
+                            <button class="btn btn-primary">Moderate All</button>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Provider</th>
+                                    <th>Rating</th>
+                                    <th>Comment</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-reviews-table">
+                                <!-- Reviews will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

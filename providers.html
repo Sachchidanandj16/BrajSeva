@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Providers - Braj Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h1>Braj<span>Services</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="providers.html" class="active">Providers</a></li>
+                        <li><a href="admin.html" id="admin-nav-link">Admin</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons" id="auth-buttons">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Service Providers</h1>
+            <p>Find verified and trusted service providers in Braj region</p>
+        </div>
+    </section>
+
+    <!-- Providers Section -->
+    <section class="providers-page">
+        <div class="container">
+            <div class="providers-filter">
+                <div class="filter-group">
+                    <input type="text" id="provider-search-input" placeholder="Search providers by name, service..." class="form-control">
+                    <button class="btn btn-primary" id="search-providers-btn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <select id="service-filter" class="filter-select">
+                        <option value="all">All Services</option>
+                        <option value="Home Repair">Home Repair</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Gardening">Gardening</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Moving">Moving</option>
+                        <option value="Tutoring">Tutoring</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                    </select>
+                    <select id="location-filter" class="filter-select">
+                        <option value="all">All Locations</option>
+                        <option value="Mathura">Mathura</option>
+                        <option value="Vrindavan">Vrindavan</option>
+                        <option value="Gokul">Gokul</option>
+                        <option value="Barsana">Barsana</option>
+                    </select>
+                    <select id="rating-filter" class="filter-select">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                        <option value="3.5">3.5+ Stars</option>
+                    </select>
+                    <select id="verification-filter" class="filter-select">
+                        <option value="all">All Providers</option>
+                        <option value="verified">Verified Only</option>
+                        <option value="unverified">Unverified</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="providers-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-providers-count">0</span>
+                    <span class="stat-label">Total Providers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="verified-providers-count">0</span>
+                    <span class="stat-label">Verified</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="top-rated-count">0</span>
+                    <span class="stat-label">Top Rated</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="active-providers">0</span>
+                    <span class="stat-label">Active Today</span>
+                </div>
+            </div>
+
+            <div class="quick-filters">
+                <h3>Quick Filters:</h3>
+                <div class="quick-filter-buttons">
+                    <button class="btn btn-outline quick-filter" data-service="all" data-rating="4.5">Top Rated</button>
+                    <button class="btn btn-outline quick-filter" data-verified="verified">Verified Only</button>
+                    <button class="btn btn-outline quick-filter" data-service="Home Repair">Home Repair</button>
+                    <button class="btn btn-outline quick-filter" data-service="Cleaning">Cleaning</button>
+                    <button class="btn btn-outline quick-filter" data-location="Mathura">Mathura</button>
+                </div>
+            </div>
+
+            <div class="providers-grid-full" id="all-providers">
+                <!-- All providers will be loaded here -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="load-more-btn">
+                    <i class="fas fa-plus"></i> Load More Providers
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Providers?</h2>
+                <p>We ensure quality and reliability in every service</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Verified Providers</h3>
+                    <p>All providers undergo thorough background checks and verification</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Customer Ratings</h3>
+                    <p>Real reviews and ratings from verified customers</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden charges with upfront pricing</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for any issues</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BrajServices</h3>
+                    <p>Connecting users with verified local service providers in the Braj region.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="#" id="become-provider-btn">Become a Provider</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Mathura, Braj Region</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@brajservices.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BrajServices. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="#" id="switch-to-register">Register</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Create an Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-role">I am a:</label>
+                    <select id="register-role" class="form-control">
+                        <option value="user">Service User</option>
+                        <option value="provider">Service Provider</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="admin-login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" class="form-control" placeholder="Enter admin username" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" class="form-control" placeholder="Enter admin password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                Demo credentials: admin / admin123
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="become-provider-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Become a Service Provider</h2>
+            <form id="provider-registration-form">
+                <div class="form-group">
+                    <label for="provider-name">Full Name</label>
+                    <input type="text" id="provider-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-email">Email</label>
+                    <input type="email" id="provider-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-phone">Phone Number</label>
+                    <input type="tel" id="provider-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-service">Service Type</label>
+                    <select id="provider-service" class="form-control" required>
+                        <option value="">Select Service</option>
+                        <option value="Home Repair">Home Repair</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Gardening">Gardening</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Moving">Moving</option>
+                        <option value="Tutoring">Tutoring</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Carpentry">Carpentry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-location">Service Location</label>
+                    <select id="provider-location" class="form-control" required>
+                        <option value="">Select Location</option>
+                        <option value="Mathura">Mathura</option>
+                        <option value="Vrindavan">Vrindavan</option>
+                        <option value="Gokul">Gokul</option>
+                        <option value="Barsana">Barsana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-experience">Years of Experience</label>
+                    <input type="number" id="provider-experience" class="form-control" placeholder="Enter years of experience" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-description">Service Description</label>
+                    <textarea id="provider-description" class="form-control" placeholder="Describe your services and expertise" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                We'll review your application and contact you within 24 hours.
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Book a Service</h2>
+            <div class="booking-summary">
+                <h4>Booking Summary</h4>
+                <div class="booking-details">
+                    <div><strong>Service:</strong> <span id="booking-service-summary"></span></div>
+                    <div><strong>Provider:</strong> <span id="booking-provider-summary"></span></div>
+                    <div><strong>Estimated Cost:</strong> <span id="booking-cost-summary"></span></div>
+                </div>
+            </div>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="booking-service">Service</label>
+                    <input type="text" id="booking-service" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="booking-provider">Provider</label>
+                    <input type="text" id="booking-provider" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="booking-date">Preferred Date</label>
+                    <input type="date" id="booking-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-time">Preferred Time</label>
+                    <input type="time" id="booking-time" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-address">Service Address</label>
+                    <textarea id="booking-address" class="form-control" placeholder="Enter your complete address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="booking-phone">Contact Phone</label>
+                    <input type="tel" id="booking-phone" class="form-control" placeholder="Your contact number" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-notes">Additional Notes</label>
+                    <textarea id="booking-notes" class="form-control" placeholder="Any special requirements or instructions"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-calendar-check"></i> Confirm Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="provider-detail-modal">
+        <div class="modal-content large-modal">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title" id="provider-detail-title">Provider Details</h2>
+            <div id="provider-detail-content">
+                <!-- Provider details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="providers.js"></script>
+    <script>
+        // Additional providers page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quick filter buttons
+            document.querySelectorAll('.quick-filter').forEach(button => {
+                button.addEventListener('click', function() {
+                    const service = this.getAttribute('data-service');
+                    const rating = this.getAttribute('data-rating');
+                    const verified = this.getAttribute('data-verified');
+                    const location = this.getAttribute('data-location');
+                    
+                    if (service && service !== 'all') {
+                        document.getElementById('service-filter').value = service;
+                    }
+                    if (rating) {
+                        document.getElementById('rating-filter').value = rating;
+                    }
+                    if (verified) {
+                        document.getElementById('verification-filter').value = verified;
+                    }
+                    if (location) {
+                        document.getElementById('location-filter').value = location;
+                    }
+                    
+                    filterProviders();
+                });
+            });
+            
+            // Update active providers count (simulated)
+            function updateActiveProviders() {
+                const activeCount = Math.floor(Math.random() * 10) + 15; // Random between 15-25
+                document.getElementById('active-providers').textContent = activeCount;
+            }
+            
+            // Initialize
+            updateActiveProviders();
+            
+            // Update every minute (simulate real-time updates)
+            setInterval(updateActiveProviders, 60000);
+            
+            // Add main.js functionality for modals
+            const mainScript = document.createElement('script');
+            mainScript.src = 'main.js';
+            document.head.appendChild(mainScript);
+        });
+    </script>
+</body>
+</html>

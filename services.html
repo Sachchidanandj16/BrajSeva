@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Services - Braj Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h1>Braj<span>Services</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html" class="active">Services</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="admin.html" id="admin-nav-link">Admin</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons" id="auth-buttons">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Browse all available services in the Braj region</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-page">
+        <div class="container">
+            <div class="services-filter">
+                <div class="filter-group">
+                    <input type="text" id="service-search-input" placeholder="Search services..." class="form-control">
+                    <button class="btn btn-primary" id="search-services-btn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <select id="category-filter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="home">Home Services</option>
+                        <option value="professional">Professional Services</option>
+                        <option value="education">Education</option>
+                    </select>
+                    <select id="sort-filter" class="filter-select">
+                        <option value="name">Sort by Name</option>
+                        <option value="popular">Sort by Popularity</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="services-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-services">0</span>
+                    <span class="stat-label">Total Services</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="home-services">0</span>
+                    <span class="stat-label">Home Services</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="professional-services">0</span>
+                    <span class="stat-label">Professional Services</span>
+                </div>
+            </div>
+
+            <div class="services-grid-full" id="all-services">
+                <!-- All services will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Service Categories</h2>
+                <p>Explore services by category</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="home">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Home Services</h3>
+                    <p>Repair, maintenance, and improvement services for your home</p>
+                    <span class="service-count" id="home-count">0 services</span>
+                </div>
+                <div class="category-card" data-category="professional">
+                    <div class="category-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Professional Services</h3>
+                    <p>Business and professional services for your needs</p>
+                    <span class="service-count" id="professional-count">0 services</span>
+                </div>
+                <div class="category-card" data-category="education">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education Services</h3>
+                    <p>Learning and educational support services</p>
+                    <span class="service-count" id="education-count">0 services</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Can't Find What You're Looking For?</h2>
+                <p>Let us know your specific service requirement and we'll help you find the right provider</p>
+                <button class="btn btn-primary" id="request-service-btn">Request a Service</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BrajServices</h3>
+                    <p>Connecting users with verified local service providers in the Braj region.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="#" id="become-provider-btn">Become a Provider</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Mathura, Braj Region</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@brajservices.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BrajServices. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="#" id="switch-to-register">Register</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Create an Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-role">I am a:</label>
+                    <select id="register-role" class="form-control">
+                        <option value="user">Service User</option>
+                        <option value="provider">Service Provider</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="admin-login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" class="form-control" placeholder="Enter admin username" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" class="form-control" placeholder="Enter admin password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                Demo credentials: admin / admin123
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="become-provider-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Become a Service Provider</h2>
+            <form id="provider-registration-form">
+                <div class="form-group">
+                    <label for="provider-name">Full Name</label>
+                    <input type="text" id="provider-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-email">Email</label>
+                    <input type="email" id="provider-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-phone">Phone Number</label>
+                    <input type="tel" id="provider-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-service">Service Type</label>
+                    <select id="provider-service" class="form-control" required>
+                        <option value="">Select Service</option>
+                        <option value="Home Repair">Home Repair</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Gardening">Gardening</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Moving">Moving</option>
+                        <option value="Tutoring">Tutoring</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Carpentry">Carpentry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-location">Service Location</label>
+                    <select id="provider-location" class="form-control" required>
+                        <option value="">Select Location</option>
+                        <option value="Mathura">Mathura</option>
+                        <option value="Vrindavan">Vrindavan</option>
+                        <option value="Gokul">Gokul</option>
+                        <option value="Barsana">Barsana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-experience">Years of Experience</label>
+                    <input type="number" id="provider-experience" class="form-control" placeholder="Enter years of experience" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-description">Service Description</label>
+                    <textarea id="provider-description" class="form-control" placeholder="Describe your services and expertise" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                We'll review your application and contact you within 24 hours.
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="service-detail-modal">
+        <div class="modal-content large-modal">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title" id="service-detail-title">Service Details</h2>
+            <div id="service-detail-content">
+                <!-- Service details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="services.js"></script>
+    <script>
+        // Additional services page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update service statistics
+            function updateServiceStats() {
+                const services = JSON.parse(localStorage.getItem('servicesData')) || servicesData;
+                const homeServices = services.filter(s => s.category === 'home').length;
+                const professionalServices = services.filter(s => s.category === 'professional').length;
+                const educationServices = services.filter(s => s.category === 'education').length;
+                
+                document.getElementById('total-services').textContent = services.length;
+                document.getElementById('home-services').textContent = homeServices;
+                document.getElementById('professional-services').textContent = professionalServices;
+                document.getElementById('home-count').textContent = `${homeServices} services`;
+                document.getElementById('professional-count').textContent = `${professionalServices} services`;
+                document.getElementById('education-count').textContent = `${educationServices} services`;
+            }
+            
+            // Category card click handlers
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    document.getElementById('category-filter').value = category;
+                    filterServices();
+                });
+            });
+            
+            // Initialize stats
+            updateServiceStats();
+            
+            // Add main.js functionality for modals
+            const mainScript = document.createElement('script');
+            mainScript.src = 'main.js';
+            document.head.appendChild(mainScript);
+        });
+    </script>
+</body>
+</html>

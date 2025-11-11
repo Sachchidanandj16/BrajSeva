@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Services Finder - Braj Region</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h1>Braj<span>Services</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="#" id="admin-nav-link">Admin</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Find Trusted Local Services in Braj Region</h2>
+            <p>Connect with verified local providers for all your service needs. From home repairs to event planning, we've got you covered.</p>
+            <div class="search-box">
+                <input type="text" id="service-search" placeholder="What service are you looking for?">
+                <input type="text" id="location-search" placeholder="Location in Braj Region">
+                <button id="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Services</h2>
+                <p>Discover the most sought-after services in the Braj region</p>
+            </div>
+            <div class="services-grid" id="featured-services">
+                <!-- Featured services will be loaded here -->
+            </div>
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="services.html" class="btn btn-primary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Providers -->
+    <section class="providers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Service Providers</h2>
+                <p>Browse our verified and highly-rated local service providers</p>
+            </div>
+            <div class="providers-grid" id="featured-providers">
+                <!-- Featured providers will be loaded here -->
+            </div>
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="providers.html" class="btn btn-primary">View All Providers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Get your services done in 3 simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Search & Find</h3>
+                    <p>Search for services you need and find the perfect provider</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Book & Confirm</h3>
+                    <p>Book your service and get instant confirmation</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Enjoy Service</h3>
+                    <p>Get your work done and pay after satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Read experiences from our satisfied customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Excellent service! Rajesh Kumar fixed my plumbing issue in no time. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Amit Sharma</strong>
+                        <span>Mathura</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Priya Sharma did an amazing job painting our house. Professional and punctual."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Neha Gupta</strong>
+                        <span>Vrindavan</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Mohan Lal transformed our garden beautifully. Great knowledge of local plants."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Rahul Verma</strong>
+                        <span>Gokul</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BrajServices</h3>
+                    <p>Connecting users with verified local service providers in the Braj region.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="#" id="become-provider-btn">Become a Provider</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Mathura, Braj Region</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@brajservices.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BrajServices. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="#" id="switch-to-register">Register</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Create an Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-role">I am a:</label>
+                    <select id="register-role" class="form-control">
+                        <option value="user">Service User</option>
+                        <option value="provider">Service Provider</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="admin-login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" class="form-control" placeholder="Enter admin username" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" class="form-control" placeholder="Enter admin password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                Demo credentials: admin / admin123
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="become-provider-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Become a Service Provider</h2>
+            <form id="provider-registration-form">
+                <div class="form-group">
+                    <label for="provider-name">Full Name</label>
+                    <input type="text" id="provider-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-email">Email</label>
+                    <input type="email" id="provider-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-phone">Phone Number</label>
+                    <input type="tel" id="provider-phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-service">Service Type</label>
+                    <select id="provider-service" class="form-control" required>
+                        <option value="">Select Service</option>
+                        <option value="Home Repair">Home Repair</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Gardening">Gardening</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Moving">Moving</option>
+                        <option value="Tutoring">Tutoring</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Carpentry">Carpentry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-location">Service Location</label>
+                    <select id="provider-location" class="form-control" required>
+                        <option value="">Select Location</option>
+                        <option value="Mathura">Mathura</option>
+                        <option value="Vrindavan">Vrindavan</option>
+                        <option value="Gokul">Gokul</option>
+                        <option value="Barsana">Barsana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provider-experience">Years of Experience</label>
+                    <input type="number" id="provider-experience" class="form-control" placeholder="Enter years of experience" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider-description">Service Description</label>
+                    <textarea id="provider-description" class="form-control" placeholder="Describe your services and expertise" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                We'll review your application and contact you within 24 hours.
+            </p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
